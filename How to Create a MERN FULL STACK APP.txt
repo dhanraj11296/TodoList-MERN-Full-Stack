@@ -1,0 +1,46 @@
+How to Create a MERN FULL STACK APPLICATION:
+
+TODO List:
+
+I. Backend:
+
+1. Create a backend folder, open in visual studio code, in terminal write (npm init) this creates a package.json file, in that file change "main": "server.js" since we are working on server
+
+2. Create a new file as server.js and in terminal write (npm install express) and follow the steps mentioned in server.js file to create a API
+
+3. Once after creating a post request using express in server.js, we need to create a JSON data for it using postman
+
+4. Install Postman App, create workspace, collection, add request, set as post and enter the url from the localhost we run in js along with the path http://localhost:8000/todos and select Body, raw, JSON and then write the JSON data key and values as we requested body in node js, then click on send, we can see that the data gets updated in node terminal
+
+5. Now create a get request in node js and similarly create a get request in postman with same url and restart the server in terminal and post request again in postman and send in get, we can see the request in terminal
+
+6. We can see that when we refresh, the values posted and updated are not stored and its empty, so we have to use MongoDB, In MongoDB compass, establish add new connection, it will show a local url, create with that. In the terminal (npm install mongoose)
+
+7. Connect mongoDB using [ mongoose.connect("mongodb://localhost:27017/mern-app") ]  mern-app is a name in mongoDB database
+
+8. Creating schema to insert data into a collection [ const todoSchema=new mongoose.Schema({title:{required:true,type:string}, description:{required:true,type:string}}) ] , the title and description are based on key values used before to GET and POST request
+
+9. Creating models [ const todoModel=mongoose.model("Todo",todoSchema) ] todoSchema is the variable used to create schema and Todo can be any singular value being named
+
+10. Using the todoModel inside post method and replacing previous methods
+
+11. Now if we run node .\server.js in terminal we can see message DB Connected. In mongoDB we can see that mern-app and model name "Todo" is taken as plural "todos" as a subfolder for mern-app in mongoDB
+
+12. Now POST a request in postman and click on send, we can see that it gets updated in monogDB
+
+13. Making changes in GET Method using todoModel.find(keys...)
+
+14. (npm install nodemon) and (npx nodemon) can restart server lively without our interface to run using (node .\server.js)
+
+15. Creating a PUT request to update using todoModel.findByIdAndUpdate 
+
+16. Creating a new PUT request in Postman and selecting body->raw->JSON and updating the value, the url path in put must have an previous id [http://localhost:8000/todos/id...(from previous created todo items)] to update it 
+
+17. Now posting a DELETE request, use todoModel.findByIdAndDelete(id) and creating a delete request in Postman
+
+
+II. Frontend:
+
+1. Create a File Path as frontend and open cmd run using (npx create-react-app appname) and run npm install and npm start
+2. Now open the VScode and open the fronend file, Use CRUD Operations and update the values.
+
